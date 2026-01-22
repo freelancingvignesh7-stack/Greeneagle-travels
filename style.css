@@ -491,6 +491,12 @@
    }
 
    /* MOBILE MENU */
+
+   body.menu-open {
+  overflow: hidden;
+}
+
+
    .mobile-menu {
      position: fixed;
      top: 0;
@@ -498,13 +504,21 @@
      width: 85%;
      max-width: 400px;
      height: 100vh;
+
      background: rgba(15, 23, 42, 0.98);
      backdrop-filter: blur(20px);
      z-index: 2000;
+
      padding: 80px 40px;
+
+     overflow-y: auto;
+     overflow-x: hidden;
+     -webkit-overflow-scrolling: touch;
+
      transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
      border-left: 1px solid rgba(255, 255, 255, 0.1);
    }
+
 
    .mobile-menu.active {
      right: 0;
@@ -541,6 +555,17 @@
      opacity: 1;
      pointer-events: auto;
    }
+
+
+   .mobile-menu img {
+  position: sticky;
+  top: 0;
+  background: rgba(15, 23, 42, 0.98);
+  padding-bottom: 20px;
+  z-index: 2;
+}
+
+
 
    /* FLOATING ACTION BAR */
    .fab-bar {
