@@ -158,3 +158,18 @@ let needsAccommodation = null;
     setTimeout(() => {
       document.getElementById('fabBar').classList.add('show');
     }, 2000);
+
+
+
+    // mobile menu
+    function openMenu() {
+      document.getElementById("mobileMenu").classList.add("active");
+      document.getElementById("menuOverlay").classList.add("show");
+      document.body.classList.add("menu-open");
+    }
+
+    function closeMenu() {
+      document.getElementById("mobileMenu").classList.remove("active");
+      document.getElementById("menuOverlay").classList.remove("show");
+      document.body.classList.remove("menu-open");
+    }
