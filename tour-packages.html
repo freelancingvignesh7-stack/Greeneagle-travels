@@ -588,52 +588,58 @@ const data = {
 ========================= */
 const destinationDB = {
   "Hill Station": {
-    "1 Day": ["Coimbatore Local", "Ooty", "Coonoor", "Pollachi", "Valparai", "Palakkad"],
-    "2D / 1N": ["Coimbatore Local", "Ooty", "Coonoor", "Pollachi", "Valparai", "Kodaikanal", "Munnar", "Palakkad", "Topslip"],
-    "3D / 2N": ["Coimbatore Local", "Ooty", "Coonoor", "Kodaikanal", "Munnar", "Valparai", "Wayanad", "Coorg", "Pollachi", "Palakkad", "Kotagiri", "Topslip"],
-    "4D / 3N": ["Coimbatore Local", "Ooty", "Coonoor", "Kodaikanal", "Munnar", "Valparai", "Wayanad", "Coorg", "Mysore", "Pollachi", "Palakkad", "Kotagiri", "Topslip", "Vattakanal"],
-    "5D / 4N": ["Coimbatore Local", "Ooty", "Coonoor", "Kodaikanal", "Munnar", "Valparai", "Wayanad", "Coorg", "Mysore", "Yercaud", "Pollachi", "Palakkad", "Kotagiri", "Topslip", "Vattakanal", "Vagamon"]
+    "1 Day": ["Ooty", "Valparai"],
+    "2D / 1N": ["Ooty", "Coonoor", "Valparai"],
+    "3D / 2N": ["Ooty", "Coonoor", "Kotagiri", "Valparai", "Wayanad", "Coorg"],
+    "4D / 3N": ["Ooty", "Coonoor", "Kotagiri", "Valparai", "Wayanad", "Coorg", "Kodaikanal", "Munnar"],
+    "5D / 4N": ["Ooty", "Coonoor", "Kotagiri", "Valparai", "Wayanad", "Coorg", "Kodaikanal", "Munnar", "Yercaud", "Vagamon", "Vattakanal"]
   },
+
   "Pilgrimage": {
     "1 Day": ["Coimbatore Local", "Palani"],
-    "2D / 1N": ["Coimbatore Local", "Palani", "Madurai", "Palakkad", "Thrissur"],
-    "3D / 2N": ["Coimbatore Local", "Palani", "Madurai", "Rameswaram", "Palakkad", "Thrissur", "Guruvayur"],
-    "4D / 3N": ["Coimbatore Local", "Palani", "Madurai", "Rameswaram", "Kanyakumari", "Tiruchendur", "Palakkad", "Thrissur", "Guruvayur", "Srivilliputhur"],
-    "5D / 4N": ["Coimbatore Local", "Palani", "Madurai", "Rameswaram", "Kanyakumari", "Tiruchendur", "Trivandrum", "Palakkad", "Thrissur", "Guruvayur", "Tirupati", "Srirangam", "Chidambaram", "Velankanni"]
+    "2D / 1N": ["Palani", "Madurai", "Palakkad", "Thrissur"],
+    "3D / 2N": ["Palani", "Madurai", "Rameswaram", "Thrissur", "Guruvayur"],
+    "4D / 3N": ["Palani", "Madurai", "Rameswaram", "Kanyakumari", "Tiruchendur", "Guruvayur", "Srivilliputhur"],
+    "5D / 4N": ["Palani", "Madurai", "Rameswaram", "Kanyakumari", "Tiruchendur", "Trivandrum", "Tirupati", "Srirangam", "Chidambaram", "Velankanni"]
   },
+
   "Beach": {
-    "1 Day": ["Coimbatore Local"],
-    "2D / 1N": ["Coimbatore Local", "Kochi"],
-    "3D / 2N": ["Coimbatore Local", "Kochi", "Kovalam", "Varkala", "Alappuzha"],
-    "4D / 3N": ["Coimbatore Local", "Kochi", "Kovalam", "Varkala", "Alappuzha", "Kanyakumari", "Mahabalipuram", "Pondicherry"],
-    "5D / 4N": ["Coimbatore Local", "Kochi", "Kovalam", "Varkala", "Alappuzha", "Kanyakumari", "Mahabalipuram", "Pondicherry", "Rameswaram", "Trivandrum", "Bekal", "Gokarna"]
+    "1 Day": ["Snehatheeram Beach"],
+    "2D / 1N": ["Snehatheeram Beach","Kochi"],
+    "3D / 2N": ["Snehatheeram Beach","Kochi", "Kovalam", "Varkala", "Alappuzha"],
+    "4D / 3N": ["Snehatheeram Beach","Kochi", "Kovalam", "Varkala", "Alappuzha", "Kanyakumari", "Mahabalipuram", "Pondicherry"],
+    "5D / 4N": ["Snehatheeram Beach","Kochi", "Kovalam", "Varkala", "Alappuzha", "Kanyakumari", "Mahabalipuram", "Pondicherry", "Rameswaram", "Bekal", "Gokarna"]
   },
+
   "Honeymoon": {
-    "1 Day": ["Coimbatore Local", "Ooty", "Valparai"],
-    "2D / 1N": ["Coimbatore Local", "Ooty", "Coonoor", "Kodaikanal", "Munnar", "Valparai"],
-    "3D / 2N": ["Coimbatore Local", "Ooty", "Coonoor", "Kodaikanal", "Munnar", "Valparai", "Wayanad", "Coorg", "Vagamon", "Alleppey"],
-    "4D / 3N": ["Coimbatore Local", "Ooty", "Coonoor", "Kodaikanal", "Munnar", "Valparai", "Wayanad", "Coorg", "Vagamon", "Alleppey", "Kumarakom", "Vattakanal"],
-    "5D / 4N": ["Coimbatore Local", "Ooty", "Coonoor", "Kodaikanal", "Munnar", "Valparai", "Wayanad", "Coorg", "Vagamon", "Alleppey", "Kumarakom", "Vattakanal", "Kovalam", "Yercaud"]
+    "1 Day": ["Ooty", "Valparai"],
+    "2D / 1N": ["Ooty", "Coonoor", "Kodaikanal", "Valparai"],
+    "3D / 2N": ["Ooty", "Kodaikanal", "Munnar", "Wayanad", "Coorg", "Vagamon", "Alappuzha"],
+    "4D / 3N": ["Ooty", "Kodaikanal", "Munnar", "Wayanad", "Coorg", "Vagamon", "Alappuzha", "Kumarakom", "Vattakanal"],
+    "5D / 4N": ["Ooty", "Kodaikanal", "Munnar", "Wayanad", "Coorg", "Vagamon", "Alappuzha", "Kumarakom", "Vattakanal", "Kovalam", "Yercaud"]
   },
+
   "Group Tour": {
-    "1 Day": ["Coimbatore Local", "Ooty", "Pollachi", "Valparai"],
-    "2D / 1N": ["Coimbatore Local", "Ooty", "Coonoor", "Kodaikanal", "Munnar", "Valparai", "Mysore", "Pollachi"],
-    "3D / 2N": ["Coimbatore Local", "Ooty", "Coonoor", "Kodaikanal", "Munnar", "Valparai", "Wayanad", "Coorg", "Mysore", "Madurai", "Pollachi"],
-    "4D / 3N": ["Coimbatore Local", "Ooty", "Coonoor", "Kodaikanal", "Munnar", "Valparai", "Wayanad", "Coorg", "Mysore", "Madurai", "Rameswaram", "Kochi", "Pollachi", "Kanyakumari"],
-    "5D / 4N": ["Coimbatore Local", "Ooty", "Coonoor", "Kodaikanal", "Munnar", "Valparai", "Wayanad", "Coorg", "Mysore", "Madurai", "Rameswaram", "Kanyakumari", "Kochi", "Trivandrum", "Bangalore", "Pollachi"]
+    "1 Day": ["Ooty", "Pollachi", "Valparai"],
+    "2D / 1N": ["Ooty", "Coonoor", "Valparai", "Mysore"],
+    "3D / 2N": ["Ooty", "Coonoor", "Kodaikanal", "Wayanad", "Coorg", "Mysore", "Madurai"],
+    "4D / 3N": ["Ooty", "Kodaikanal", "Munnar", "Wayanad", "Coorg", "Mysore", "Madurai", "Rameswaram", "Kochi"],
+    "5D / 4N": ["Ooty", "Kodaikanal", "Munnar", "Wayanad", "Coorg", "Mysore", "Madurai", "Rameswaram", "Kanyakumari", "Kochi", "Trivandrum", "Bangalore"]
   },
+
   "City Tour": {
     "1 Day": ["Coimbatore Local", "Pollachi", "Palakkad"],
-    "2D / 1N": ["Coimbatore Local", "Mysore", "Kochi", "Thrissur", "Pollachi", "Palakkad"],
-    "3D / 2N": ["Coimbatore Local", "Mysore", "Kochi", "Madurai", "Thrissur", "Pollachi", "Palakkad", "Bangalore"],
-    "4D / 3N": ["Coimbatore Local", "Mysore", "Kochi", "Madurai", "Bangalore", "Thrissur", "Pollachi", "Palakkad", "Pondicherry", "Trichy"],
-    "5D / 4N": ["Coimbatore Local", "Mysore", "Kochi", "Madurai", "Bangalore", "Trivandrum", "Thrissur", "Pollachi", "Palakkad", "Pondicherry", "Trichy", "Chennai"]
+    "2D / 1N": ["Coimbatore Local", "Pollachi", "Palakkad","Mysore", "Kochi", "Thrissur"],
+    "3D / 2N": ["Coimbatore Local", "Pollachi", "Palakkad","Mysore", "Kochi", "Madurai", "Bangalore"],
+    "4D / 3N": ["Coimbatore Local", "Pollachi", "Palakkad","Mysore", "Kochi", "Madurai", "Bangalore", "Pondicherry", "Trichy"],
+    "5D / 4N": ["Coimbatore Local", "Pollachi", "Palakkad","Mysore", "Kochi", "Madurai", "Bangalore", "Trivandrum", "Pondicherry", "Trichy", "Chennai"]
   }
 };
 
+
 // Maximum places allowed per duration
 const maxPlaces = {
-  "1 Day": 2,
+  "1 Day": 1,
   "2D / 1N": 3,
   "3D / 2N": 4,
   "4D / 3N": 5,
