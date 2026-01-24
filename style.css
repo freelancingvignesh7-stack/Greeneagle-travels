@@ -571,7 +571,6 @@ h1, h2, h3 {
   color: #000000 !important;
 }
 
-
 /* MOBILE MENU */
 body.menu-open {
   overflow: hidden;
@@ -584,46 +583,72 @@ body.menu-open {
   width: 85%;
   max-width: 400px;
   height: 100vh;
-  background: rgba(10, 25, 41, 0.98);
-  backdrop-filter: blur(20px);
+
+  /* LIGHT BACKGROUND */
+  background: linear-gradient(
+    180deg,
+    #f8fafc 0%,
+    #eef2f7 50%,
+    #e5e9f0 100%
+  );
+
   z-index: 2000;
-  padding: 80px 40px;
+  padding: 40px 30px;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  border-left: 1px solid rgba(32, 178, 170, 0.3);
+  transition: right 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+/* Active */
 .mobile-menu.active {
   right: 0;
 }
 
+/* Logo Wrapper (WHITE BOX) */
+.mobile-menu img {
+  display: block;
+  margin: 0 auto 40px;
+  padding: 18px 22px;
+  background: #ffffff;
+  border-radius: 16px;
+
+  /* BORDER + GLOW */
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  box-shadow:
+    0 0 0 1px rgba(212, 175, 55, 0.25),
+    0 10px 30px rgba(212, 175, 55, 0.25);
+
+  max-width: 180px;
+}
+
+/* Menu Links */
 .mobile-menu a {
   display: block;
-  color: #fff;
+  color: #0f172a;
   text-decoration: none;
-  font-size: 24px;
-  font-weight: 300;
-  margin-bottom: 30px;
-  transition: all 0.3s;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 26px;
+  transition: all 0.3s ease;
   font-family: 'Cormorant Garamond', serif;
 }
 
 .mobile-menu a:hover {
-  color: var(--accent);
+  color: #bfa14a;
   transform: translateX(10px);
 }
 
+/* Overlay */
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.6);
   opacity: 0;
   pointer-events: none;
   z-index: 1500;
-  transition: opacity 0.4s;
-  backdrop-filter: blur(4px);
+  transition: opacity 0.35s ease;
 }
 
 .menu-overlay.show {
@@ -631,14 +656,30 @@ body.menu-open {
   pointer-events: auto;
 }
 
-.mobile-menu img {
-  position: sticky;
-  top: 0;
-  background: rgba(10, 25, 41, 0.98);
-  padding-bottom: 20px;
-  z-index: 2;
-  filter: drop-shadow(0 2px 10px rgba(32, 178, 170, 0.4));
+/* Active mobile menu item */
+.mobile-menu a.active {
+  color: #bfa14a;
+  font-weight: 600;
+  position: relative;
 }
+
+/* Indicator bar */
+.mobile-menu a.active::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: #bfa14a;
+  border-radius: 4px;
+}
+.nav-link.active {
+  color: var(--gold);
+  font-weight: 600;
+}
+
 
 /* FLOATING ACTION BAR */
 .fab-bar {
@@ -841,4 +882,64 @@ footer {
   body{font-size:12px}
   h1{font-size:25px}
   h5{font-size:14px}
+}
+
+
+/* =========================
+   FINAL MODAL – GOLD THEME
+========================= */
+#finalModal .modal-content {
+  background: linear-gradient(
+    135deg,
+    #d4af37 0%,
+    #e6c75f 50%,
+    #c9a227 100%
+  ) !important;
+  border-radius: 20px !important;
+  border: none !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35) !important;
+}
+
+/* Title */
+#finalModal h5 {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+/* Inputs */
+#finalModal .form-control {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(0,0,0,0.18) !important;
+  padding: 14px 16px !important;
+}
+
+#finalModal .form-control::placeholder {
+  color: rgba(0,0,0,0.6) !important;
+}
+
+/* Datetime icon visibility */
+#finalModal input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(0) !important;
+}
+
+/* Helper text */
+#finalModal small {
+  color: rgba(0,0,0,0.7) !important;
+  font-weight: 500 !important;
+}
+
+/* Button */
+#finalModal .book-btn {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 30px !important;
+  padding: 14px !important;
+  font-weight: 600 !important;
+  border: none !important;
+}
+
+#finalModal .book-btn:hover {
+  background: #1a1a1a !important;
 }

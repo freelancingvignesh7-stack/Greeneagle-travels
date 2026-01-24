@@ -173,3 +173,49 @@ let needsAccommodation = null;
       document.getElementById("menuOverlay").classList.remove("show");
       document.body.classList.remove("menu-open");
     }
+
+
+// date check in booking bookingForm
+
+document.addEventListener("DOMContentLoaded", () => {
+  const startInput = document.getElementById("startDate");
+  const endInput = document.getElementById("endDate");
+
+  // Set minimum datetime = NOW
+  function setMinNow(input) {
+    const now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+    input.min = now.toISOString().slice(0, 16);
+  }
+
+  setMinNow(startInput);
+  setMinNow(endInput);
+
+  // When pickup date changes
+  startInput.addEventListener("change", () => {
+    if (!startInput.value) return;
+
+    const pickupDate = new Date(startInput.value);
+
+    // Set drop min = pickup date
+    pickupDate.setMinutes(
+      pickupDate.getMinutes() - pickupDate.getTimezoneOffset()
+    );
+    endInput.min = pickupDate.toISOString().slice(0, 16);
+
+    // If drop is earlier, reset it
+    if (endInput.value && new Date(endInput.value) < new Date(startInput.value)) {
+      endInput.value = "";
+    }
+  });
+
+  // Prevent manual past date entry (extra safety)
+  endInput.addEventListener("change", () => {
+    if (!startInput.value || !endInput.value) return;
+
+    if (new Date(endInput.value) < new Date(startInput.value)) {
+      alert("Drop date & time cannot be before pickup date & time");
+      endInput.value = "";
+    }
+  });
+});

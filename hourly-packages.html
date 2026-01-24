@@ -61,10 +61,11 @@
   <img src="images/logo.png" alt="Green Eagle Tours" style="width:140px;margin-bottom:40px;">
   <a href="index.html" onclick="closeMenu()">Home</a>
   <a href="tour-packages.html" onclick="closeMenu()">Tour Packages</a>
-  <a href="hourly-packages.html" onclick="closeMenu()">Hourly Packages</a>
+  <a href="hourly-packages.html" class="active" onclick="closeMenu()">Hourly Packages</a>
   <a href="services.html" onclick="closeMenu()">Services</a>
   <a href="about.html" onclick="closeMenu()">About</a>
   <a href="contact.html" onclick="closeMenu()">Contact</a>
+
 </div>
 
 <!-- HERO -->
@@ -106,11 +107,21 @@
         <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <input class="form-control mb-3" id="pickup" placeholder="Pickup Location">
-        <input class="form-control mb-3" type="datetime-local" id="pickupTime">
-        <input class="form-control mb-3" id="drop" placeholder="Drop Location">
-        <button class="btn-luxury book-now-fast w-100" onclick="sendWhatsApp()">
-          <span>Send WhatsApp</span>
+
+    <input class="form-control mb-3" id="pickup" placeholder="Pickup Location">
+    <input class="form-control mb-3" id="drop" placeholder="Drop Location">
+    <label class="form-label">Pickup Date & Time</label>
+    <input class="form-control mb-3" type="datetime-local" id="pickupTime">
+    <button class="btn-luxury book-now-fast w-100" id="whatsBtn" onclick="sendWhatsApp()">
+    <span>Send WhatsApp</span>
+  </button>
+
+  <small class="text-danger d-none" id="dateError">
+    Pickup date & time must be in the future
+  </small>
+
+  </div>
+
         </button>
       </div>
     </div>
@@ -189,11 +200,12 @@ GST : 33BVFPG0418P1ZM
       </div>
 
       <div class="col">
-        <a href="tel:+919751415617" class="fab-item">
-          <i class="bi bi-telephone-fill"></i>
-          <span>Call</span>
+        <a href="mailto:support@greeneagletours.com" class="fab-item">
+          <i class="bi bi-envelope-fill"></i>
+          <span>Mail</span>
         </a>
       </div>
+
 
       <div class="col">
         <a href="https://wa.me/919751415617" class="fab-item" target="_blank">
@@ -203,9 +215,9 @@ GST : 33BVFPG0418P1ZM
       </div>
 
       <div class="col">
-        <a href="mailto:support@greeneagletours.com" class="fab-item">
-          <i class="bi bi-envelope-fill"></i>
-          <span>Mail</span>
+        <a href="tel:+919751415617" class="fab-item">
+          <i class="bi bi-telephone-fill"></i>
+          <span>Call</span>
         </a>
       </div>
 
@@ -227,20 +239,20 @@ GST : 33BVFPG0418P1ZM
 <script>
 const rates={
 8:[
-{v:"Swift Dzire",t:"Sedan",p:"₹2800",eh:"₹300",km:"₹13"},
-{v:"Toyota Etios",t:"Sedan",p:"₹2800",eh:"₹300",km:"₹13"},
-{v:"Ertiga",t:"SUV",p:"₹3300",eh:"₹300",km:"₹18"},
-{v:"Innova A/C",t:"MPV",p:"₹3700",eh:"₹300",km:"₹15"},
-{v:"Innova Crysta",t:"Premium MPV",p:"₹4500",eh:"₹500",km:"₹16"},
-{v:"Tempo Traveller",t:"12/14 Seater",p:"₹5200",eh:"₹500",km:"₹20"}
+{v:"Swift Dzire 4+1",t:"Sedan",p:"₹2800",eh:"₹300",km:"₹13"},
+{v:"Toyota Etios 4+1",t:"Sedan",p:"₹2800",eh:"₹300",km:"₹13"},
+{v:"Ertiga 6+1",t:"SUV",p:"₹3300",eh:"₹300",km:"₹18"},
+{v:"Innova A/C 7+1",t:"MPV",p:"₹3700",eh:"₹300",km:"₹15"},
+{v:"Innova Crysta 6+1 / 7+1",t:"Premium MPV",p:"₹4500",eh:"₹500",km:"₹16"},
+{v:"Tempo Traveller 12-14",t:"Force",p:"₹5200",eh:"₹500",km:"₹20"}
 ],
 10:[
-{v:"Swift Dzire",t:"Sedan",p:"₹3000",eh:"₹300",km:"₹13"},
-{v:"Toyota Etios",t:"Sedan",p:"₹3000",eh:"₹300",km:"₹13"},
-{v:"Ertiga",t:"SUV",p:"₹3600",eh:"₹300",km:"₹18"},
-{v:"Innova A/C",t:"MPV",p:"₹4000",eh:"₹300",km:"₹15"},
-{v:"Innova Crysta",t:"Premium MPV",p:"₹5000",eh:"₹500",km:"₹16"},
-{v:"Tempo Traveller",t:"12/14 Seater",p:"₹5500",eh:"₹500",km:"₹20"}
+{v:"Swift Dzire 4+1",t:"Sedan",p:"₹3000",eh:"₹300",km:"₹13"},
+{v:"Toyota Etios 4+1",t:"Sedan",p:"₹3000",eh:"₹300",km:"₹13"},
+{v:"Ertiga 6+1",t:"SUV",p:"₹3600",eh:"₹300",km:"₹18"},
+{v:"Innova A/C 7+1",t:"MPV",p:"₹4000",eh:"₹300",km:"₹15"},
+{v:"Innova Crysta 6+1 / 7+1",t:"Premium MPV",p:"₹5000",eh:"₹500",km:"₹16"},
+{v:"Tempo Traveller 12- 14",t:"Force",p:"₹5500",eh:"₹500",km:"₹20"}
 ]
 };
 
@@ -256,8 +268,8 @@ g.innerHTML+=`
 <div class="feature-card h-100">
 <h5>${r.v}</h5>
 <p>${r.t}</p>
-<p><strong>${h==="8"?"8H/80Km":"10H/100Km"}:</strong> ${r.p}</p>
-<p>Extra Hr: ${r.eh} | Per Km: ${r.km}</p>
+<p><strong>${h==="8"?"8H/80Km Limit":"10H/100Km Limit"}:</strong> ${r.p}</p>
+<p>Extra Hr: ${r.eh} | Extra Km: ${r.km}</p>
 <button class="btn-luxury book-now-fast w-100"
 onclick="openBooking('${r.v}','${r.t}','${h}','${r.p}','${r.eh}','${r.km}')">
 <span>Book Now</span>
@@ -279,18 +291,66 @@ h=h%12||12;m=m<10?"0"+m:m;
 return `${x.getDate()}-${x.getMonth()+1}-${x.getFullYear()} ${h}:${m} ${ap}`;
 }
 
-function sendWhatsApp(){
-const msg=`🚖 Hourly Cab Booking
-🚗 ${current.v} (${current.t})
-⏱ ${current.p==="8"?"8H/80Km":"10H/100Km"}
-💰 ${current.pr}
-📍 Pickup: ${pickup.value}
-🕒 Time: ${formatAMPM(pickupTime.value)}
-📍 Drop: ${drop.value}`;
-window.open("https://wa.me/919751415617?text="+encodeURIComponent(msg));
+document.getElementById("pickupTime").addEventListener("change", validatePickupTime);
+
+function validatePickupTime() {
+  const pickupVal = document.getElementById("pickupTime").value;
+  const btn = document.getElementById("whatsBtn");
+  const err = document.getElementById("dateError");
+
+  if (!pickupVal) return;
+
+  const selected = new Date(pickupVal);
+  const now = new Date();
+
+  if (selected < now) {
+    btn.style.display = "none";
+    err.classList.remove("d-none");
+  } else {
+    btn.style.display = "block";
+    err.classList.add("d-none");
+  }
 }
 
+function sendWhatsApp() {
+  const pickupDate = new Date(pickupTime.value);
+  if (pickupDate < new Date()) {
+    alert("Pickup date & time must be in the future");
+    return;
+  }
+
+  const msg = `🚖 *HOURLY CAB BOOKING ENQUIRY*
+
+🚗 ${current.v} (${current.t})
+📦 ${current.p === "8" ? "8H / 80KM" : "10H / 100KM"}
+💰 ${current.pr}
+📍 ${pickup.value}
+🕒 ${formatAMPM(pickupTime.value)}
+🏁 ${drop.value}`;
+
+  window.open(
+    "https://wa.me/919751415617?text=" + encodeURIComponent(msg),
+    "_blank"
+  );
+}
+
+
+
 window.onload=()=>loadPackage("8");
+
+
+function setMinPickupDateTime() {
+  const now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+
+  document.getElementById("pickupTime").min = now.toISOString().slice(0,16);
+}
+
+window.onload = () => {
+  loadPackage("8");
+  setMinPickupDateTime();
+};
+
 </script>
 
 </body>
