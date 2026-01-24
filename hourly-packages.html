@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hourly Packages – Green Eagle Tours</title>
+
+<link rel="icon" href="images/logo.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- PAGE ONLY FIXES -->
+<style>
+.book-now-fast,
+.book-now-fast:hover,
+.book-now-fast:active,
+.book-now-fast:focus {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+.book-now-fast span {
+  color: #ffffff !important;
+  position: relative;
+  z-index: 3;
+}
+.package-toggle button.active {
+  background: var(--gold);
+  color: #0f172a;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR (NO TOGGLER – SAME AS INDEX) -->
+<nav class="glass-nav" id="navbar">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between py-3">
+      <div class="logo-wrapper">
+        <img src="images/logo.png" alt="Green Eagle Tours" class="nav-logo">
+      </div>
+
+      <div class="d-none d-lg-flex gap-5">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="tour-packages.html" class="nav-link">Tour Packages</a>
+        <a href="hourly-packages.html" class="nav-link">Hourly Packages</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <img src="images/logo.png" alt="Green Eagle Tours" style="width:140px;margin-bottom:40px;">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="tour-packages.html" onclick="closeMenu()">Tour Packages</a>
+  <a href="hourly-packages.html" onclick="closeMenu()">Hourly Packages</a>
+  <a href="services.html" onclick="closeMenu()">Services</a>
+  <a href="about.html" onclick="closeMenu()">About</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero-section" style="min-height:65vh">
+  <div class="hero-bg"></div>
+  <div class="container hero-content text-center">
+    <div style="color:var(--gold);letter-spacing:3px;font-size:14px;">COIMBATORE CITY</div>
+    <h1 class="hero-title">Hourly Cab Packages</h1>
+    <p class="hero-subtitle mx-auto" style="max-width:700px;">
+      Flexible city travel with professional drivers & transparent pricing.
+    </p>
+  </div>
+</section>
+
+<!-- PACKAGE TOGGLE -->
+<section style="background:#0f172a;">
+<div class="container py-5">
+
+<div class="text-center mb-4 package-toggle">
+  <button class="btn btn-outline-light me-2 active" onclick="loadPackage('8')" id="btn8">
+    8 Hrs / 80 Km
+  </button>
+  <button class="btn btn-outline-light" onclick="loadPackage('10')" id="btn10">
+    10 Hrs / 100 Km
+  </button>
+</div>
+
+<div class="row g-4" id="vehicleGrid"></div>
+
+</div>
+</section>
+
+<!-- BOOKING MODAL -->
+<div class="modal" id="bookingModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="background:#0a1929;color:#fff;">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">Book Hourly Cab</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control mb-3" id="pickup" placeholder="Pickup Location">
+        <input class="form-control mb-3" type="datetime-local" id="pickupTime">
+        <input class="form-control mb-3" id="drop" placeholder="Drop Location">
+        <button class="btn-luxury book-now-fast w-100" onclick="sendWhatsApp()">
+          <span>Send WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+  <div class="text-center">
+    <img src="images/logo.png" alt="Green Eagle Tours" style="height: 70px; margin-bottom: 20px;">
+
+    <p style="opacity: 0.8; max-width: 600px; margin: 0 auto 30px;">
+      Your premier travel partner for curated journeys from Coimbatore across South India. Excellence in every mile.
+    </p>
+
+    <div class="footer-divider"></div>
+
+    <div class="mb-4">
+      <!-- WhatsApp -->
+      <a href="https://wa.me/919751415617" class="social-link" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+      </a>
+
+      <!-- Phone -->
+      <a href="tel:+919751415617" class="social-link">
+        <i class="bi bi-telephone-fill"></i>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:support@greeneagletours.com" class="social-link">
+        <i class="bi bi-envelope-fill"></i>
+      </a>
+
+      <!-- Facebook (add link later) -->
+      <a href="https://www.facebook.com/share/1GHVkhtPcd/" class="social-link" target="_blank">
+        <i class="bi bi-facebook"></i>
+      </a>
+
+      <!-- Instagram (add link later) -->
+      <a href="https://www.instagram.com/green_eagle_holidays?igsh=MW9zcmtlYXlpeXRoYg==
+" class="social-link" target="_blank">
+        <i class="bi bi-instagram"></i>
+      </a>
+    </div>
+
+<p style="font-size: 14px; opacity: 0.7;">
+GST : 33BVFPG0418P1ZM
+</p>
+    <p style="font-size: 14px; opacity: 0.7;">
+      78, Siruvani Main Rd, Post office upstairs, Perur, Coimbatore, Tamil Nadu 641010
+    </p>
+    <p style="font-size: 14px; opacity: 0.7;">
+      © 2026 Green Eagle Tours & Travels.
+    </p>
+    <p style="font-size: 14px; opacity: 0.7;">
+      Designed & curated by
+      <a href="https://marcinmind.in" target="_blank" style="text-decoration: none; color: var(--gold);">
+        Marc in Mind Technologies
+      </a>.
+    </p>
+  </div>
+</div>
+</footer>
+
+<!-- FLOATING ACTION BAR (MOBILE – SAME AS INDEX) -->
+<div class="fab-bar" id="fabBar">
+  <div class="container-fluid px-0">
+    <div class="row g-0">
+
+      <div class="col d-lg-none">
+        <a href="index.html" class="fab-item">
+          <i class="bi bi-house-fill"></i>
+          <span>Home</span>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="tel:+919751415617" class="fab-item">
+          <i class="bi bi-telephone-fill"></i>
+          <span>Call</span>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="https://wa.me/919751415617" class="fab-item" target="_blank">
+          <i class="bi bi-whatsapp"></i>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="mailto:support@greeneagletours.com" class="fab-item">
+          <i class="bi bi-envelope-fill"></i>
+          <span>Mail</span>
+        </a>
+      </div>
+
+      <div class="col d-lg-none">
+        <a href="javascript:void(0)" onclick="openMenu()" class="fab-item">
+          <i class="bi bi-list"></i>
+          <span>Menu</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+<script>
+const rates={
+8:[
+{v:"Swift Dzire",t:"Sedan",p:"₹2800",eh:"₹300",km:"₹13"},
+{v:"Toyota Etios",t:"Sedan",p:"₹2800",eh:"₹300",km:"₹13"},
+{v:"Ertiga",t:"SUV",p:"₹3300",eh:"₹300",km:"₹18"},
+{v:"Innova A/C",t:"MPV",p:"₹3700",eh:"₹300",km:"₹15"},
+{v:"Innova Crysta",t:"Premium MPV",p:"₹4500",eh:"₹500",km:"₹16"},
+{v:"Tempo Traveller",t:"12/14 Seater",p:"₹5200",eh:"₹500",km:"₹20"}
+],
+10:[
+{v:"Swift Dzire",t:"Sedan",p:"₹3000",eh:"₹300",km:"₹13"},
+{v:"Toyota Etios",t:"Sedan",p:"₹3000",eh:"₹300",km:"₹13"},
+{v:"Ertiga",t:"SUV",p:"₹3600",eh:"₹300",km:"₹18"},
+{v:"Innova A/C",t:"MPV",p:"₹4000",eh:"₹300",km:"₹15"},
+{v:"Innova Crysta",t:"Premium MPV",p:"₹5000",eh:"₹500",km:"₹16"},
+{v:"Tempo Traveller",t:"12/14 Seater",p:"₹5500",eh:"₹500",km:"₹20"}
+]
+};
+
+let current={};
+
+function loadPackage(h){
+document.getElementById("btn8").classList.toggle("active",h==="8");
+document.getElementById("btn10").classList.toggle("active",h==="10");
+const g=document.getElementById("vehicleGrid");g.innerHTML="";
+rates[h].forEach(r=>{
+g.innerHTML+=`
+<div class="col-md-4">
+<div class="feature-card h-100">
+<h5>${r.v}</h5>
+<p>${r.t}</p>
+<p><strong>${h==="8"?"8H/80Km":"10H/100Km"}:</strong> ${r.p}</p>
+<p>Extra Hr: ${r.eh} | Per Km: ${r.km}</p>
+<button class="btn-luxury book-now-fast w-100"
+onclick="openBooking('${r.v}','${r.t}','${h}','${r.p}','${r.eh}','${r.km}')">
+<span>Book Now</span>
+</button>
+</div>
+</div>`;
+});
+}
+
+function openBooking(v,t,p,pr,eh,km){
+current={v,t,p,pr,eh,km};
+new bootstrap.Modal(document.getElementById("bookingModal")).show();
+}
+
+function formatAMPM(d){
+const x=new Date(d);
+let h=x.getHours(),m=x.getMinutes(),ap=h>=12?"PM":"AM";
+h=h%12||12;m=m<10?"0"+m:m;
+return `${x.getDate()}-${x.getMonth()+1}-${x.getFullYear()} ${h}:${m} ${ap}`;
+}
+
+function sendWhatsApp(){
+const msg=`🚖 Hourly Cab Booking
+🚗 ${current.v} (${current.t})
+⏱ ${current.p==="8"?"8H/80Km":"10H/100Km"}
+💰 ${current.pr}
+📍 Pickup: ${pickup.value}
+🕒 Time: ${formatAMPM(pickupTime.value)}
+📍 Drop: ${drop.value}`;
+window.open("https://wa.me/919751415617?text="+encodeURIComponent(msg));
+}
+
+window.onload=()=>loadPackage("8");
+</script>
+
+</body>
+</html>

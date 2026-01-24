@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us – Green Eagle Tours & Travels</title>
+
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Page-only helper styles -->
+  <style>
+    .reviews-scroll {
+      max-height: 420px;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .review-name {
+      font-weight: 600;
+      color: var(--gold);
+      font-size: 15px;
+    }
+    .review-text {
+      font-size: 14px;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="glass-nav" id="navbar">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between py-3">
+      <div class="logo-wrapper">
+        <img src="images/logo.png" alt="Green Eagle Tours" class="nav-logo">
+      </div>
+
+      <div class="d-none d-lg-flex gap-5">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="tour-packages.html" class="nav-link">Tour Packages</a>
+        <a href="hourly-packages.html" class="nav-link">Hourly Packages</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <img src="images/logo.png" alt="Green Eagle Tours" style="width:140px;margin-bottom:40px;">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="tour-packages.html" onclick="closeMenu()">Tour Packages</a>
+  <a href="hourly-packages.html" onclick="closeMenu()">Hourly Packages</a>
+  <a href="services.html" onclick="closeMenu()">Services</a>
+  <a href="about.html" onclick="closeMenu()">About</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero-section" style="min-height:65vh">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="container hero-content text-center">
+    <div style="color:var(--gold);letter-spacing:3px;font-size:14px;">ABOUT US</div>
+    <h1 class="hero-title">Travel Built on Trust<br>& Experience</h1>
+    <p class="hero-subtitle mx-auto" style="max-width:720px;">
+      Since 2015, Green Eagle Tours & Travels has been crafting reliable,
+      comfortable and memorable journeys across South India.
+    </p>
+  </div>
+</section>
+
+<!-- ABOUT CONTENT -->
+<section style="background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)">
+  <div class="container py-5">
+
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;">
+          Led by Experience. Driven by Passion.
+        </h2>
+
+        <p style="opacity:0.9;font-size:16px;line-height:1.8;">
+          Green Eagle Tours & Travels was founded in <strong>2015</strong> by
+          <strong>Mr. Gowtham Rajeshwaram</strong> with a clear vision — to deliver honest,
+          transparent and customer-focused travel services from Coimbatore.
+        </p>
+
+        <p style="opacity:0.9;font-size:16px;line-height:1.8;">
+          What began as a small travel operation has grown into a trusted name,
+          serving families, groups, corporates, students and solo travelers
+          across Tamil Nadu, Kerala, Karnataka and beyond.
+        </p>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="feature-card">
+          <h5>Our Strength</h5>
+          <ul style="padding-left:18px;line-height:1.9;opacity:0.9;">
+            <li>25+ professionally trained drivers</li>
+            <li>10 to 30+ years of individual driving experience</li>
+            <li>Fluent in Tamil, English, Malayalam, Hindi, Kannada, Telugu & Marathi</li>
+            <li>Deep local knowledge of tourist circuits & hidden spots</li>
+            <li>Clean vehicles & customer-first attitude</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- COUNTERS -->
+    <div class="row text-center g-4 mt-5">
+      <div class="col-6 col-md-3">
+        <div class="stat-box">
+          <div class="stat-number">2015</div>
+          <div class="stat-label">Established</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-box">
+          <div class="stat-number">25+</div>
+          <div class="stat-label">Expert Drivers</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-box">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Happy Travelers</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-box">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Destinations</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section style="background:#0f172a">
+  <div class="container py-5">
+    <div class="text-center mb-4">
+      <div style="color:var(--gold);letter-spacing:2px;font-size:14px;">
+        CUSTOMER REVIEWS
+      </div>
+      <h2>What Our Travelers Say</h2>
+    </div>
+
+    <div class="reviews-scroll">
+      <div class="review-card">
+        <div class="review-name">Thiyagarajan G</div>
+        <div class="review-text">
+          Gowtham Rajeshwaram sir’s planning helped us explore Pollachi & Valparai beautifully.
+          Hotels were good, pricing was nominal and driver Selvin was very polite.
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-name">Praveen Kumar</div>
+        <div class="review-text">
+          Smooth and comfortable Chennai to Ooty trip.
+          Everything was arranged perfectly. Highly recommended.
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-name">Vinoth Sari</div>
+        <div class="review-text">
+          Well organised group tour. Clean vehicle, good food, great stay.
+          100% recommended travel agency.
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-name">Debleena Biswas</div>
+        <div class="review-text">
+          Selvin anna and Green Eagle team gave us a memorable Ooty & Coonoor trip.
+          Excellent local guidance.
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-name">Krishna Kumar P</div>
+        <div class="review-text">
+          Client-friendly, well planned trip with great coordination.
+          We felt well taken care of throughout.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)">
+  <div class="container py-5 text-center">
+    <h2>Ready to Travel with Confidence?</h2>
+    <a href="index.html#bk"
+       class="btn btn-lg"
+       style="background:var(--gold);color:#0f172a;padding:14px 40px;border-radius:30px;font-weight:600;">
+      Plan Your Trip
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+  <div class="text-center">
+    <img src="images/logo.png" alt="Green Eagle Tours" style="height: 70px; margin-bottom: 20px;">
+
+    <p style="opacity: 0.8; max-width: 600px; margin: 0 auto 30px;">
+      Your premier travel partner for curated journeys from Coimbatore across South India. Excellence in every mile.
+    </p>
+
+    <div class="footer-divider"></div>
+
+    <div class="mb-4">
+      <!-- WhatsApp -->
+      <a href="https://wa.me/919751415617" class="social-link" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+      </a>
+
+      <!-- Phone -->
+      <a href="tel:+919751415617" class="social-link">
+        <i class="bi bi-telephone-fill"></i>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:support@greeneagletours.com" class="social-link">
+        <i class="bi bi-envelope-fill"></i>
+      </a>
+
+      <!-- Facebook (add link later) -->
+      <a href="https://www.facebook.com/share/1GHVkhtPcd/" class="social-link" target="_blank">
+        <i class="bi bi-facebook"></i>
+      </a>
+
+      <!-- Instagram (add link later) -->
+      <a href="https://www.instagram.com/green_eagle_holidays?igsh=MW9zcmtlYXlpeXRoYg==
+" class="social-link" target="_blank">
+        <i class="bi bi-instagram"></i>
+      </a>
+    </div>
+
+<p style="font-size: 14px; opacity: 0.7;">
+GST : 33BVFPG0418P1ZM
+</p>
+    <p style="font-size: 14px; opacity: 0.7;">
+      78, Siruvani Main Rd, Post office upstairs, Perur, Coimbatore, Tamil Nadu 641010
+    </p>
+    <p style="font-size: 14px; opacity: 0.7;">
+      © 2026 Green Eagle Tours & Travels.
+    </p>
+    <p style="font-size: 14px; opacity: 0.7;">
+      Designed & curated by
+      <a href="https://marcinmind.in" target="_blank" style="text-decoration: none; color: var(--gold);">
+        Marc in Mind Technologies
+      </a>.
+    </p>
+  </div>
+</div>
+</footer>
+
+<!-- FLOATING ACTION BAR -->
+<div class="fab-bar show" id="fabBar">
+  <div class="container-fluid px-0">
+    <div class="row g-0">
+      <div class="col d-lg-none">
+        <a href="index.html" class="fab-item"><i class="bi bi-house-fill"></i><span>Home</span></a>
+      </div>
+      <div class="col">
+        <a href="tel:+919751415617" class="fab-item"><i class="bi bi-telephone-fill"></i><span>Call</span></a>
+      </div>
+      <div class="col">
+        <a href="https://wa.me/919751415617" class="fab-item"><i class="bi bi-whatsapp"></i><span>WhatsApp</span></a>
+      </div>
+      <div class="col">
+        <a href="mailto:support@greeneagletours.com" class="fab-item"><i class="bi bi-envelope-fill"></i><span>Mail</span></a>
+      </div>
+      <div class="col d-lg-none">
+        <a href="javascript:void(0)" onclick="openMenu()" class="fab-item"><i class="bi bi-list"></i><span>Menu</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+<script>
+  let lastScrollTop = 0;
+  const fabBar = document.getElementById("fabBar");
+
+  window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      // scrolling down → hide
+      fabBar.classList.remove("show");
+    } else {
+      // scrolling up → show
+      fabBar.classList.add("show");
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  }, false);
+</script>
+
+</body>
+</html>
