@@ -1,146 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services – Green Eagle Tours & Travels</title>
-  <link rel="icon" href="images/logo.png" type="image/png">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- NAVIGATION -->
-<nav class="glass-nav" id="navbar">
-  <div class="container">
-    <div class="d-flex align-items-center justify-content-between py-3">
-      <div class="logo-wrapper">
-        <img src="images/logo.png" alt="Green Eagle Tours" class="nav-logo">
-      </div>
-
-      <div class="d-none d-lg-flex gap-5">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="tour-packages.html" class="nav-link">Tour Packages</a>
-        <a href="hourly-packages.html" class="nav-link">Hourly Packages</a>
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
-<div class="mobile-menu" id="mobileMenu">
-  <img src="images/logo.png" alt="Green Eagle Tours" style="width:140px;margin-bottom:40px;">
-  <a href="index.html" onclick="closeMenu()">Home</a>
-<a href="tour-packages.html" onclick="closeMenu()">Tour Packages</a>
-<a href="hourly-packages.html" onclick="closeMenu()">Hourly Packages</a>
-<a href="services.html" class="active" onclick="closeMenu()">Services</a>
-<a href="about.html" onclick="closeMenu()">About</a>
-<a href="contact.html" onclick="closeMenu()">Contact</a>
-
-</div>
-
-<!-- HERO -->
-<section class="hero-section" style="min-height:65vh;">
-  <div class="hero-bg"></div>
-  <div class="hero-pattern"></div>
-
-  <div class="container hero-content text-center">
-    <div style="font-size:14px;letter-spacing:3px;color:var(--gold);margin-bottom:12px;">
-      OUR SERVICES
-    </div>
-    <h1 class="hero-title">Travel Solutions<br>That Go Further</h1>
-    <p class="hero-subtitle mx-auto" style="max-width:700px;">
-      Comprehensive travel services from Coimbatore, designed for families,
-      groups, institutions, and businesses across South India.
-    </p>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section style="background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);">
-  <div class="container py-5">
-    <div class="row g-4">
-
-      <div class="col-md-4"><div class="feature-card h-100"><h5><i class="bi bi-map-fill me-2"></i>Tour Operations</h5><p>End-to-end tour planning including transport, stays, sightseeing and coordination.</p></div></div>
-      <div class="col-md-4"><div class="feature-card h-100"><h5><i class="bi bi-people-fill me-2"></i>Group Tours</h5><p>Professionally managed group departures across South India.</p></div></div>
-      <div class="col-md-4"><div class="feature-card h-100"><h5><i class="bi bi-house-heart-fill me-2"></i>Family Tours</h5><p>Comfort-first itineraries ideal for families of all age groups.</p></div></div>
-      <div class="col-md-4"><div class="feature-card h-100"><h5><i class="bi bi-briefcase-fill me-2"></i>Corporate Trips</h5><p>Executive travel, offsites, meetings and business logistics.</p></div></div>
-      <div class="col-md-4"><div class="feature-card h-100"><h5><i class="bi bi-mortarboard-fill me-2"></i>College IVs</h5><p>Safe and punctual transport for industrial visits and IV tours.</p></div></div>
-      <div class="col-md-4"><div class="feature-card h-100"><h5><i class="bi bi-book-fill me-2"></i>Educational Trips</h5><p>School and institutional tours with focus on safety and learning.</p></div></div>
-      <div class="col-md-4"><div class="feature-card h-100"><h5><i class="bi bi-clock-fill me-2"></i>Hourly Cabs</h5><p>Flexible city cab rentals for short-duration travel.</p></div></div>
-      <div class="col-md-4"><div class="feature-card h-100"><h5><i class="bi bi-airplane-fill me-2"></i>Airport Transfers</h5><p>On-time airport pickups and drops with premium vehicles.</p></div></div>
-      <div class="col-md-4"><div class="feature-card h-100"><h5><i class="bi bi-geo-alt-fill me-2"></i>Custom Tours</h5><p>Tailor-made itineraries across Tamil Nadu, Kerala & Karnataka.</p></div></div>
-
-    </div>
-
-    <!-- CTA -->
-    <div class="text-center mt-5">
-      <a href="index.html#bk" class="btn btn-lg"
-         style="background:var(--gold);color:#0f172a;padding:14px 40px;border-radius:30px;font-weight:600;">
-        Plan Your Journey
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER (FULL – SAME AS INDEX) -->
-<footer>
+  <!-- FOOTER -->
+  <footer>
   <div class="container">
     <div class="text-center">
-      <img src="images/logo.png" alt="Green Eagle Tours" style="height:70px;margin-bottom:20px;">
-      <p style="opacity:0.8;max-width:600px;margin:0 auto 30px;">
+      <img src="images/logo.png" alt="Green Eagle Tours" style="height: 70px; margin-bottom: 20px;">
+
+      <p style="opacity: 0.8; max-width: 600px; margin: 0 auto 30px;">
         Your premier travel partner for curated journeys from Coimbatore across South India. Excellence in every mile.
       </p>
 
       <div class="footer-divider"></div>
 
       <div class="mb-4">
-        <a href="https://wa.me/919751415617" class="social-link" target="_blank"><i class="bi bi-whatsapp"></i></a>
-        <a href="tel:+919751415617" class="social-link"><i class="bi bi-telephone-fill"></i></a>
-        <a href="mailto:support@greeneagletours.com" class="social-link"><i class="bi bi-envelope-fill"></i></a>
-        <a href="https://www.facebook.com/share/1GHVkhtPcd/" class="social-link" target="_blank"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/green_eagle_holidays" class="social-link" target="_blank"><i class="bi bi-instagram"></i></a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/919751415617" class="social-link" target="_blank">
+          <i class="bi bi-whatsapp"></i>
+        </a>
+
+        <!-- Phone -->
+        <a href="tel:+919751415617" class="social-link">
+          <i class="bi bi-telephone-fill"></i>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:support@greeneagletours.com" class="social-link">
+          <i class="bi bi-envelope-fill"></i>
+        </a>
+
+        <!-- Facebook (add link later) -->
+        <a href="https://www.facebook.com/share/1GHVkhtPcd/" class="social-link" target="_blank">
+          <i class="bi bi-facebook"></i>
+        </a>
+
+        <!-- Instagram (add link later) -->
+        <a href="https://www.instagram.com/green_eagle_holidays?igsh=MW9zcmtlYXlpeXRoYg==
+" class="social-link" target="_blank">
+          <i class="bi bi-instagram"></i>
+        </a>
       </div>
 
-      <p style="font-size:14px;opacity:0.7;">GST : 33BVFPG0418P1ZM</p>
-      <p style="font-size:14px;opacity:0.7;">78, Siruvani Main Rd, Perur, Coimbatore – 641010</p>
-      <p style="font-size:14px;opacity:0.7;">© 2026 Green Eagle Tours & Travels</p>
+<p style="font-size: 14px; opacity: 0.7;">
+  GST : 33BVFPG0418P1ZM
+</p>
+      <p style="font-size: 14px; opacity: 0.7;">
+        78, Siruvani Main Rd, Post office upstairs, Perur, Coimbatore, Tamil Nadu 641010
+      </p>
+      <p style="font-size: 14px; opacity: 0.7;">
+        © 2026 Green Eagle Tours & Travels.
+      </p>
+      <p style="font-size: 14px; opacity: 0.7;">
+        Designed & curated by
+        <a href="https://marcinmind.in" target="_blank" style="text-decoration: none; color: var(--gold);">
+          Marc in Mind Technologies
+        </a>.
+      </p>
     </div>
   </div>
 </footer>
-
-<!-- FLOATING ACTION BAR -->
-<div class="fab-bar show" id="fabBar">
-  <div class="container-fluid px-0">
-    <div class="row g-0">
-      <div class="col d-lg-none">
-        <a href="index.html" class="fab-item"><i class="bi bi-house-fill"></i><span>Home</span></a>
-      </div>
-      <div class="col">
-        <a href="tel:+919751415617" class="fab-item"><i class="bi bi-telephone-fill"></i><span>Call</span></a>
-      </div>
-      <div class="col">
-        <a href="https://wa.me/919751415617" class="fab-item"><i class="bi bi-whatsapp"></i><span>WhatsApp</span></a>
-      </div>
-      <div class="col">
-        <a href="mailto:support@greeneagletours.com" class="fab-item"><i class="bi bi-envelope-fill"></i><span>Mail</span></a>
-      </div>
-      <div class="col d-lg-none">
-        <a href="javascript:void(0)" onclick="openMenu()" class="fab-item"><i class="bi bi-list"></i><span>Menu</span></a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
