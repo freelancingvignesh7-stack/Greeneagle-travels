@@ -118,6 +118,46 @@
   color: #000000 !important;
 }
 
+/* Counter buttons */
+.counter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter-btn {
+  background: var(--gold);
+  color: #000;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.counter-btn:hover {
+  transform: scale(1.1);
+}
+
+.counter-btn:disabled {
+  background: rgba(255,255,255,.2);
+  cursor: not-allowed;
+  transform: scale(1);
+}
+
+.counter-value {
+  font-size: 24px;
+  font-weight: 600;
+  min-width: 50px;
+  text-align: center;
+  color: var(--gold);
+}
 
 </style>
 </head>
@@ -220,59 +260,54 @@
     </div>
 
     <!-- ACCOMMODATION -->
-    <h5 class="mt-4">Need Accommodation? <span class="text-danger">*</span></h5>
-    <div class="row g-3">
-      <div class="col-md-6 toggle-btn" onclick="setAccom(true)">Yes</div>
-      <div class="col-md-6 toggle-btn" onclick="setAccom(false)">No</div>
-    </div>
-
-    <!-- ACCOMMODATION BOX -->
-    <div id="accomBox" style="display:none">
-
-      <!-- ADULTS & CHILDREN -->
-      <div class="row mt-4">
-        <div class="col-md-6">
-          <label>Adults</label>
-          <input
-            id="adult"
-            type="number"
-            min="1"
-            value="1"
-            class="form-control"
-            style="background:#0f2a3a!important;color:#fff!important;border-radius:18px;padding:16px;border:1px solid rgba(255,255,255,.2);"
-          >
-        </div>
-
-        <div class="col-md-6">
-          <label>Children</label>
-          <input
-            id="child"
-            type="number"
-            min="0"
-            value="0"
-            class="form-control"
-            style="background:#0f2a3a!important;color:#fff!important;border-radius:18px;padding:16px;border:1px solid rgba(255,255,255,.2);"
-            onchange="updateChildAges()"
-          >
-        </div>
-      </div>
-
-      <!-- CHILD AGES -->
-      <div id="childAges" class="mt-3" style="display:none;">
-        <label>Children Ages</label>
-        <div id="childAgesInputs"></div>
-      </div>
-
-      <!-- STAY TYPE -->
-      <h5 class="mt-4">Accommodation Style</h5>
+    <div id="accomSection">
+      <h5 class="mt-4">Need Accommodation? <span class="text-danger">*</span></h5>
       <div class="row g-3">
-        <div class="col stay-option" onclick="setStay(this,'Budget')">Budget</div>
-        <div class="col stay-option" onclick="setStay(this,'Home Stay')">Home Stay</div>
-        <div class="col stay-option active" onclick="setStay(this,'3-Star')">3-Star</div>
-        <div class="col stay-option" onclick="setStay(this,'4-Star')">4-Star</div>
-        <div class="col stay-option" onclick="setStay(this,'5-Star')">5-Star</div>
+        <div class="col-md-6 toggle-btn" onclick="setAccom(true)">Yes</div>
+        <div class="col-md-6 toggle-btn" onclick="setAccom(false)">No</div>
       </div>
 
+      <!-- ACCOMMODATION BOX -->
+      <div id="accomBox" style="display:none">
+
+        <!-- ADULTS & CHILDREN WITH COUNTERS -->
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <label class="mb-2">Adults</label>
+            <div class="counter-wrapper">
+              <button type="button" class="counter-btn" onclick="decrementAdults()">−</button>
+              <span class="counter-value" id="adultCount">1</span>
+              <button type="button" class="counter-btn" onclick="incrementAdults()">+</button>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="mb-2">Children</label>
+            <div class="counter-wrapper">
+              <button type="button" class="counter-btn" onclick="decrementChildren()">−</button>
+              <span class="counter-value" id="childCount">0</span>
+              <button type="button" class="counter-btn" onclick="incrementChildren()">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHILD AGES -->
+        <div id="childAges" class="mt-3" style="display:none;">
+          <label>Children Ages</label>
+          <div id="childAgesInputs"></div>
+        </div>
+
+        <!-- STAY TYPE -->
+        <h5 class="mt-4">Accommodation Style</h5>
+        <div class="row g-3">
+          <div class="col stay-option" onclick="setStay(this,'Budget')">Budget</div>
+          <div class="col stay-option" onclick="setStay(this,'Home Stay')">Home Stay</div>
+          <div class="col stay-option active" onclick="setStay(this,'3-Star')">3-Star</div>
+          <div class="col stay-option" onclick="setStay(this,'4-Star')">4-Star</div>
+          <div class="col stay-option" onclick="setStay(this,'5-Star')">5-Star</div>
+        </div>
+
+      </div>
     </div>
 
     <!-- BOOK -->
@@ -294,7 +329,7 @@
 <div class="modal-content p-4">
 <h5 style="color:black" class="mb-3">Enter Trip Details</h5>
 <input id="m_name" placeholder="Your Name" class="form-control mb-2" required>
-<input id="m_phone" placeholder="Phone Number" class="form-control mb-2" required>
+<input id="m_phone" placeholder="Phone Number (10 digits)" class="form-control mb-2" type="tel" maxlength="10" pattern="[0-9]{10}" required>
 <input id="m_pickup" placeholder="Pickup Location" class="form-control mb-2" required>
 <input id="m_drop" placeholder="Drop Location" class="form-control mb-2" required>
 <small class="text-muted d-block mb-2">
@@ -580,7 +615,9 @@ const data = {
   category: "",
   places: [],
   stay: "3-Star",
-  accom: null
+  accom: null,
+  adults: 1,
+  children: 0
 };
 
 /* =========================
@@ -647,6 +684,35 @@ const maxPlaces = {
 };
 
 /* =========================
+   ADULT/CHILD COUNTER FUNCTIONS
+========================= */
+function incrementAdults() {
+  data.adults++;
+  document.getElementById('adultCount').textContent = data.adults;
+}
+
+function decrementAdults() {
+  if (data.adults > 1) {
+    data.adults--;
+    document.getElementById('adultCount').textContent = data.adults;
+  }
+}
+
+function incrementChildren() {
+  data.children++;
+  document.getElementById('childCount').textContent = data.children;
+  updateChildAges();
+}
+
+function decrementChildren() {
+  if (data.children > 0) {
+    data.children--;
+    document.getElementById('childCount').textContent = data.children;
+    updateChildAges();
+  }
+}
+
+/* =========================
    UI HELPERS
 ========================= */
 function activateChip(el) {
@@ -678,7 +744,15 @@ function updateCounter() {
 }
 
 function validateBooking() {
-  const hasEssentials = data.duration && data.category && data.places.length > 0 && data.accom !== null;
+  let hasEssentials;
+
+  // For 1 Day trips, accommodation is not required
+  if (data.duration === "1 Day") {
+    hasEssentials = data.duration && data.category && data.places.length > 0;
+  } else {
+    hasEssentials = data.duration && data.category && data.places.length > 0 && data.accom !== null;
+  }
+
   const bookBtn = document.getElementById('bookBtn');
   const bookHint = document.getElementById('bookHint');
 
@@ -688,7 +762,11 @@ function validateBooking() {
     bookHint.style.color = "var(--gold)";
   } else {
     bookBtn.disabled = true;
-    bookHint.textContent = "Please select duration, trip type, and destinations to continue";
+    if (data.duration === "1 Day") {
+      bookHint.textContent = "Please select trip type and destinations to continue";
+    } else {
+      bookHint.textContent = "Please select duration, trip type, and destinations to continue";
+    }
     bookHint.style.color = "rgba(255,255,255,0.7)";
   }
 }
@@ -702,6 +780,16 @@ function setDuration(value) {
 
   // Reset places when duration changes
   data.places = [];
+
+  // Show/hide accommodation section based on duration
+  const accomSection = document.getElementById('accomSection');
+  if (value === "1 Day") {
+    accomSection.style.display = "none";
+    data.accom = false; // Set to false for 1 Day trips
+  } else {
+    accomSection.style.display = "block";
+    data.accom = null; // Reset for multi-day trips
+  }
 
   // If category is already selected, update places
   if (data.category) {
@@ -829,7 +917,7 @@ function setAccom(value) {
    CHILD AGES
 ========================= */
 function updateChildAges() {
-  const count = parseInt(document.getElementById('child').value || 0, 10);
+  const count = data.children;
   const container = document.getElementById("childAges");
   const inputsContainer = document.getElementById("childAgesInputs");
 
@@ -872,7 +960,31 @@ function openModal() {
 }
 
 /* =========================
-   WHATSAPP SEND
+   PHONE NUMBER VALIDATION
+========================= */
+document.addEventListener('DOMContentLoaded', function() {
+  const phoneInput = document.getElementById('m_phone');
+
+  phoneInput.addEventListener('input', function(e) {
+    // Remove any non-digit characters
+    this.value = this.value.replace(/[^0-9]/g, '');
+
+    // Limit to 10 digits
+    if (this.value.length > 10) {
+      this.value = this.value.slice(0, 10);
+    }
+  });
+
+  phoneInput.addEventListener('keypress', function(e) {
+    // Only allow numbers
+    if (e.key < '0' || e.key > '9') {
+      e.preventDefault();
+    }
+  });
+});
+
+/* =========================
+   WHATSAPP SEND WITH VALIDATION
 ========================= */
 function sendWA() {
   const name = document.getElementById('m_name').value.trim();
@@ -881,8 +993,41 @@ function sendWA() {
   const drop = document.getElementById('m_drop').value.trim();
   const dateTime = document.getElementById('m_time').value;
 
-  if (!name || !phone || !pickup || !drop || !dateTime) {
-    alert("Please fill all details");
+  // Validate all required fields
+  if (!name) {
+    alert("Please enter your name");
+    document.getElementById('m_name').focus();
+    return;
+  }
+
+  if (!phone) {
+    alert("Please enter your phone number");
+    document.getElementById('m_phone').focus();
+    return;
+  }
+
+  // Validate phone number is exactly 10 digits
+  if (phone.length !== 10) {
+    alert("Phone number must be exactly 10 digits");
+    document.getElementById('m_phone').focus();
+    return;
+  }
+
+  if (!pickup) {
+    alert("Please enter pickup location");
+    document.getElementById('m_pickup').focus();
+    return;
+  }
+
+  if (!drop) {
+    alert("Please enter drop location");
+    document.getElementById('m_drop').focus();
+    return;
+  }
+
+  if (!dateTime) {
+    alert("Please select pickup date and time");
+    document.getElementById('m_time').focus();
     return;
   }
 
@@ -900,7 +1045,7 @@ function sendWA() {
     .map(i => i.value)
     .filter(v => v !== "");
 
-  const message = `🌄 *Tour Package Enquiry*
+  let message = `🌄 *Tour Package Enquiry*
 
 👤 *Name:* ${name}
 📞 *Phone:* ${phone}
@@ -913,11 +1058,18 @@ ${data.places.map(p => "• " + p).join("\n")}
 
 🚕 *Pickup:* ${pickup}
 🎯 *Drop:* ${drop}
-🕒 *Pickup Date & Time:* ${formattedDateTime}
+🕒 *Pickup Date & Time:* ${formattedDateTime}`;
+
+  // Only add accommodation details for multi-day trips
+  if (data.duration !== "1 Day") {
+    message += `
 
 🏨 *Accommodation:* ${data.accom ? data.stay : "Not Required"}
-👨‍👩‍👧 *Adults:* ${document.getElementById('adult').value}
-👶 *Children:* ${document.getElementById('child').value}${childAges.length ? " (Ages: " + childAges.join(", ") + ")" : ""}
+👨‍👩‍👧 *Adults:* ${data.adults}
+👶 *Children:* ${data.children}${childAges.length ? " (Ages: " + childAges.join(", ") + ")" : ""}`;
+  }
+
+  message += `
 
 ✨ *Please share itinerary & quotation*`;
 

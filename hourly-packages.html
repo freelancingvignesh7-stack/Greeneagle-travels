@@ -108,10 +108,13 @@
       </div>
       <div class="modal-body">
 
-    <input class="form-control mb-3" id="pickup" placeholder="Pickup Location">
-    <input class="form-control mb-3" id="drop" placeholder="Drop Location">
-    <label class="form-label">Pickup Date & Time</label>
-    <input class="form-control mb-3" type="datetime-local" id="pickupTime">
+        <input class="form-control mb-3" id="pickup" placeholder="Pickup Location" required>
+
+        <input class="form-control mb-3" id="drop" placeholder="Drop Location" required>
+
+        <label class="form-label">Pickup Date & Time</label>
+        <input class="form-control mb-3" type="datetime-local" id="pickupTime" required>
+
     <button class="btn-luxury book-now-fast w-100" id="whatsBtn" onclick="sendWhatsApp()">
     <span>Send WhatsApp</span>
   </button>
@@ -238,11 +241,16 @@ GST : 33BVFPG0418P1ZM
 
 <script>
 
+pickup.addEventListener("input", toggleWhatsBtn);
+drop.addEventListener("input", toggleWhatsBtn);
+pickupTime.addEventListener("change", toggleWhatsBtn);
+
+
   const rates={
 8:[
 {v:"Swift Dzire 4+1",t:"Sedan",p:"₹2800",eh:"₹300",km:"₹13"},
 {v:"Toyota Etios 4+1",t:"Sedan",p:"₹2800",eh:"₹300",km:"₹13"},
-{v:"Ertiga 6+1",t:"SUV",p:"₹3300",eh:"₹400",km:"₹18"},
+{v:"Ertiga 6+1",t:"SUV",p:"₹3300",eh:"₹400",km:"₹15"},
 {v:"Innova A/C 7+1",t:"MPV",p:"₹3700",eh:"₹400",km:"₹15"},
 {v:"Innova Crysta 6+1 / 7+1",t:"Premium MPV",p:"₹4500",eh:"₹500",km:"₹16"},
 {v:"Tempo Traveller 12-14",t:"Force",p:"₹5200",eh:"₹500",km:"₹20"}
@@ -250,7 +258,7 @@ GST : 33BVFPG0418P1ZM
 10:[
 {v:"Swift Dzire 4+1",t:"Sedan",p:"₹3000",eh:"₹300",km:"₹13"},
 {v:"Toyota Etios 4+1",t:"Sedan",p:"₹3000",eh:"₹300",km:"₹13"},
-{v:"Ertiga 6+1",t:"SUV",p:"₹3600",eh:"₹400",km:"₹18"},
+{v:"Ertiga 6+1",t:"SUV",p:"₹3600",eh:"₹400",km:"₹15"},
 {v:"Innova A/C 7+1",t:"MPV",p:"₹4000",eh:"₹400",km:"₹15"},
 {v:"Innova Crysta 6+1 / 7+1",t:"Premium MPV",p:"₹5000",eh:"₹500",km:"₹16"},
 {v:"Tempo Traveller 12- 14",t:"Force",p:"₹5500",eh:"₹500",km:"₹20"}
@@ -281,6 +289,9 @@ onclick="openBooking('${r.v}','${r.t}','${h}','${r.p}','${r.eh}','${r.km}')">
 }
 
 function openBooking(v,t,p,pr,eh,km){
+  document.getElementById("whatsBtn").disabled = true;
+document.getElementById("whatsBtn").style.opacity = "0.6";
+
 current={v,t,p,pr,eh,km};
 new bootstrap.Modal(document.getElementById("bookingModal")).show();
 }
@@ -312,10 +323,38 @@ function validatePickupTime() {
     err.classList.add("d-none");
   }
 }
+function toggleWhatsBtn() {
+  const btn = document.getElementById("whatsBtn");
+
+  if (
+    pickup.value.trim() &&
+    drop.value.trim() &&
+    pickupTime.value &&
+    new Date(pickupTime.value) > new Date()
+  ) {
+    btn.disabled = false;
+    btn.style.opacity = "1";
+  } else {
+    btn.disabled = true;
+    btn.style.opacity = "0.6";
+  }
+}
+
 
 function sendWhatsApp() {
-  const pickupDate = new Date(pickupTime.value);
-  if (pickupDate < new Date()) {
+  const pickupVal = pickup.value.trim();
+  const dropVal = drop.value.trim();
+  const timeVal = pickupTime.value;
+
+  if (!pickupVal || !dropVal || !timeVal) {
+    alert("Please fill Pickup location, Drop location, and Pickup Date & Time");
+    return;
+  }
+
+  const pickupDate = new Date(timeVal);
+  const now = new Date();
+
+  if (pickupDate <= now) {
     alert("Pickup date & time must be in the future");
     return;
   }
@@ -325,15 +364,19 @@ function sendWhatsApp() {
 🚗 ${current.v} (${current.t})
 📦 ${current.p === "8" ? "8H / 80KM" : "10H / 100KM"}
 💰 ${current.pr}
-📍 ${pickup.value}
-🕒 ${formatAMPM(pickupTime.value)}
-🏁 ${drop.value}`;
+
+📍 *Pickup:* ${pickupVal}
+🏁 *Drop:* ${dropVal}
+🕒 *Pickup Time:* ${formatAMPM(timeVal)}
+
+✨ Please share confirmation & driver details`;
 
   window.open(
     "https://wa.me/919751415617?text=" + encodeURIComponent(msg),
     "_blank"
   );
 }
+
 
 
 
@@ -356,4 +399,3 @@ window.onload = () => {
 
 </body>
 </html>
-

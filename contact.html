@@ -70,51 +70,62 @@
 <section style="background:#0f172a;">
   <div class="container py-5">
 
-    <div class="row g-4 mb-5">
+    <div class="row g-4 mb-4">
 
-      <div class="col-md-4">
+      <!-- CALL -->
+      <div class="col-12 col-lg-4">
         <div class="feature-card h-100 text-center">
           <i class="bi bi-telephone-fill" style="font-size:28px;color:var(--gold);"></i>
-          <h5 class="mt-3">Contact us</h5>
+          <h5 class="mt-3">Call Us</h5>
           <p>
             <a href="tel:+919751415617" style="color:#fff;text-decoration:none;">
               +91 97514 15617
             </a>
-            <a href="mailto:support@greeneagletours.com" style="color:#fff;text-decoration:none;">
-  support@greeneagletours.com
-</a>
-
           </p>
         </div>
       </div>
 
-      <div class="col-md-4">
+      <!-- WHATSAPP -->
+      <div class="col-12 col-lg-4">
         <div class="feature-card h-100 text-center">
           <i class="bi bi-whatsapp" style="font-size:28px;color:var(--gold);"></i>
           <h5 class="mt-3">WhatsApp</h5>
-          <p>
-            Instant response for bookings & enquiries
-          </p>
+          <p>Instant response for bookings & enquiries</p>
           <a href="https://wa.me/919751415617" target="_blank" class="btn-luxury">
-    <span>Chat on WhatsApp</span>
-  </a>
+            <span>Chat on WhatsApp</span>
+          </a>
         </div>
       </div>
 
-      <div class="col-md-4">
+      <!-- EMAIL -->
+      <div class="col-12 col-lg-4">
         <div class="feature-card h-100 text-center">
-          <i class="bi bi-geo-alt-fill" style="font-size:28px;color:var(--gold);"></i>
-          <h5 class="mt-3">Office Address</h5>
+          <i class="bi bi-envelope-fill" style="font-size:28px;color:var(--gold);"></i>
+          <h5 class="mt-3">Email Us</h5>
           <p>
-            78, Siruvani Main Rd,<br>
-            Post Office Upstairs,<br>
-            Perur, Coimbatore – 641010.<br>
-            GST : 33BVFPG0418P1ZM
+            <a href="mailto:support@greeneagletours.com" style="color:#fff;text-decoration:none;">
+              support@greeneagletours.com
+            </a>
           </p>
         </div>
       </div>
 
     </div>
+    <div class="row g-4">
+      <div class="col-12">
+        <div class="feature-card text-center">
+          <i class="bi bi-geo-alt-fill" style="font-size:28px;color:var(--gold);"></i>
+          <h5 class="mt-3">Office Address</h5>
+          <p>
+            78, Siruvani Main Road,<br>
+            Post Office Upstairs,<br>
+            Perur, Coimbatore – 641010.<br>
+            <strong>GST:</strong> 33BVFPG0418P1ZM
+          </p>
+        </div>
+      </div>
+    </div>
+
 
     <!-- SUPPORT FORM -->
     <div class="row justify-content-center">
@@ -263,23 +274,37 @@
 <script src="script.js"></script>
 
 <script>
-function sendWhatsAppContact(){
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const pickup = document.getElementById("pickup").value;
-  const msg = document.getElementById("message").value;
+function sendWhatsAppContact() {
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const pickup = document.getElementById("pickup").value.trim();
+  const msg = document.getElementById("message").value.trim();
+
+  if (!name || !phone || !pickup || !msg) {
+    alert("Please fill all required fields before sending");
+    return;
+  }
+
+  if (!/^[0-9]{10}$/.test(phone)) {
+    alert("Please enter a valid 10-digit phone number");
+    return;
+  }
 
   const text =
 `📞 *New Contact Enquiry*
-👤 Name: ${name}
-📱 Phone: ${phone}
-📍 Pickup: ${pickup}
-📝 Message: ${msg}`;
 
-  window.open("https://wa.me/919751415617?text="+encodeURIComponent(text));
+👤 *Name:* ${name}
+📱 *Phone:* ${phone}
+📍 *Pickup Location:* ${pickup}
+📝 *Message:* ${msg}`;
+
+  window.open(
+    "https://wa.me/919751415617?text=" + encodeURIComponent(text),
+    "_blank"
+  );
 }
+
 </script>
 
 </body>
 </html>
-

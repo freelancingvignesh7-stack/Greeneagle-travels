@@ -109,50 +109,129 @@ let needsAccommodation = null;
 
     // WhatsApp submission
     function sendWhatsApp(e) {
-      e.preventDefault();
+    e.preventDefault();
 
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const pickup = document.getElementById('pickup').value;
-      const destination = document.getElementById('destination').value;
-      const places = document.getElementById('places').value;
-      const startDate = document.getElementById('startDate').value;
-      const endDate = document.getElementById('endDate').value;
-      const vehicle = document.getElementById('vehicle').value;
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const pickup = document.getElementById('pickup').value.trim();
+    const destination = document.getElementById('destination').value.trim();
+    const places = document.getElementById('places').value.trim();
+    const startDate = document.getElementById('startDate').value;
+    const endDate = document.getElementById('endDate').value;
+    const vehicle = document.getElementById('vehicle').value;
 
-      let message = `🌟 *New Booking Enquiry - Green Eagle Tours*\n\n`;
-      message += `👤 *Name:* ${name}\n`;
-      message += `📱 *Phone:* ${phone}\n`;
-      if (pickup) message += `📍 *Pickup:* ${pickup}\n`;
-      if (destination) message += `📍 *Drop:* ${destination}\n`;
-      if (places) message += `🗺️ *Places to Visit:* ${places}\n`;
-      if (startDate) message += `📅 *Start:* ${new Date(startDate).toLocaleString()}\n`;
-      if (endDate) message += `📅 *End:* ${new Date(endDate).toLocaleString()}\n`;
-      if (vehicle) message += `🚗 *Vehicle:* ${vehicle}\n`;
+    /* ===============================
+       HARD REQUIRED FIELD VALIDATION
+       =============================== */
 
-      if (needsAccommodation === true) {
-        message += `\n🏨 *Accommodation Required:* Yes\n`;
-        message += `👨 *Adults:* ${adultsCount}\n`;
-        message += `👶 *Children:* ${childrenCount}\n`;
+    if (!name) {
+      alert("Please enter your name.");
+      return;
+    }
 
-        if (childrenCount > 0) {
-          message += `*Child Ages:* `;
-          const ages = [];
-          for (let i = 0; i < childrenCount; i++) {
-            const age = childAges[i] || 'Not specified';
-            ages.push(age);
-          }
-          message += ages.join(', ') + '\n';
-        }
+    if (!phone || !/^[6-9]\d{9}$/.test(phone)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
 
-        message += `🏨 *Accommodation Type:* ${selectedAccommodation}\n`;
-      } else if (needsAccommodation === false) {
-        message += `\n🏨 *Accommodation Required:* No\n`;
+    if (!pickup) {
+      alert("Please enter pickup location.");
+      return;
+    }
+
+    if (!destination) {
+      alert("Please enter drop location.");
+      return;
+    }
+
+    if (!places) {
+      alert("Please mention places to visit.");
+      return;
+    }
+
+    if (!startDate) {
+      alert("Please select pickup date & time.");
+      return;
+    }
+
+    if (!endDate) {
+      alert("Please select drop date & time.");
+      return;
+    }
+
+    if (new Date(endDate) <= new Date(startDate)) {
+      alert("Drop date & time must be after pickup date & time.");
+      return;
+    }
+
+    if (!vehicle) {
+      alert("Please select a vehicle.");
+      return;
+    }
+
+    if (needsAccommodation === null) {
+      alert("Please select whether accommodation is required.");
+      return;
+    }
+
+    /* ===============================
+       ACCOMMODATION VALIDATION
+       =============================== */
+
+    if (needsAccommodation === true) {
+      if (adultsCount < 1) {
+        alert("At least one adult is required.");
+        return;
       }
 
-      const whatsappURL = `https://wa.me/919751415617?text=${encodeURIComponent(message)}`;
-      window.open(whatsappURL, '_blank');
+      if (childrenCount > 0) {
+        for (let i = 0; i < childrenCount; i++) {
+          if (
+            childAges[i] === undefined ||
+            childAges[i] === "" ||
+            isNaN(childAges[i])
+          ) {
+            alert(`Please enter age for Child ${i + 1}.`);
+            return;
+          }
+        }
+      }
     }
+
+    /* ===============================
+       BUILD WHATSAPP MESSAGE
+       =============================== */
+
+    let message = `🌟 *New Booking Enquiry - Green Eagle Tours*\n\n`;
+    message += `👤 *Name:* ${name}\n`;
+    message += `📱 *Phone:* ${phone}\n`;
+    message += `📍 *Pickup:* ${pickup}\n`;
+    message += `📍 *Drop:* ${destination}\n`;
+    message += `🗺️ *Places:* ${places}\n`;
+    message += `📅 *Pickup:* ${new Date(startDate).toLocaleString()}\n`;
+    message += `📅 *Drop:* ${new Date(endDate).toLocaleString()}\n`;
+    message += `🚗 *Vehicle:* ${vehicle}\n`;
+
+    if (needsAccommodation) {
+      message += `\n🏨 *Accommodation:* Yes\n`;
+      message += `👨 *Adults:* ${adultsCount}\n`;
+      message += `👶 *Children:* ${childrenCount}\n`;
+
+      if (childrenCount > 0) {
+        message += `🎒 *Child Ages:* ${childAges.join(', ')}\n`;
+      }
+
+      message += `🏩 *Stay Type:* ${selectedAccommodation}\n`;
+    } else {
+      message += `\n🏨 *Accommodation:* No\n`;
+    }
+
+    const whatsappURL =
+      `https://wa.me/919751415617?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank");
+  }
+
 
     // Initial FAB show
     setTimeout(() => {
